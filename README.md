@@ -10,3 +10,12 @@
 * **结果自动化导出**：一键将最优解、求解耗时、选中的物品明细导出为本地 `.txt` 文件。
 * **现代化 GUI 界面**：使用 Java Swing 打造，通过下拉框和按钮实现全交互式操作。
 ## 🛠️ 项目架构 (Project Structure)
+```text
+com.knapsack
+├── core
+│   ├── DPSolver.java        # 核心动态规划求解引擎
+│   └── DataProcessor.java    # 排序与数据预处理工具类
+├── entity
+│   ├── Item.java            # 基础物品实体类
+│   ├── ItemSet.java         # 项集实体类（包含三项物品）
+│   └── KnapsackInstance.java # 完整的背包问题实例模型
