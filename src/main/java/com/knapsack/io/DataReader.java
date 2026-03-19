@@ -147,16 +147,31 @@ public class DataReader {
         return list;
     }
     
- // 测试读取功能
+ // 测试读取、排序、求解与画图的全流程功能
     public static void main(String[] args) {
-        // 注意这里的 resources 结尾的 s！
+        // 注意这里的 resources 结尾的 s！你现在测试的是 idkp1-10.txt
         String testFilePath = "src/main/resources/idkp1-10.txt"; 
         
         List<KnapsackInstance> list = readDataFile(testFilePath);
+        System.out.println("成功读取到 " + list.size() + " 组数据集！\n");
         
-        System.out.println("成功读取到 " + list.size() + " 组数据集！");
-        for (KnapsackInstance instance : list) {
-            System.out.println(instance);
+        // 为了避免一下子打印太多，我们只拿第一个实例 (例如 IDKP1) 来进行测试
+        if (!list.isEmpty()) {
+            KnapsackInstance firstInstance = list.get(0);
+            
+            System.out.println("--- 1. 测试排序功能 ---");
+            System.out.println("【排序前】第一项集的比值: " + firstInstance.getItemSets().get(0).getThirdItemRatio());
+            // 调用你写好的排序模块
+            com.knapsack.core.DataProcessor.sortByThirdItemRatio(firstInstance);
+            System.out.println("【排序后】第一项集的比值: " + firstInstance.getItemSets().get(0).getThirdItemRatio() + "\n");
+            
+            System.out.println("--- 2. 测试核心 DP 求解算法 ---");
+            // 调用动态规划求解器
+            com.knapsack.core.DPSolver.solve(firstInstance);
+            
+            System.out.println("\n--- 3. 正在启动图形界面绘制散点图 ---");
+            // 绘制该实例的散点图
+            com.knapsack.ui.ScatterPlotViewer.display(firstInstance);
         }
     }
 }
