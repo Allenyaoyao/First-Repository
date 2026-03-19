@@ -19,3 +19,8 @@ com.knapsack
 │   ├── Item.java            # 基础物品实体类
 │   ├── ItemSet.java         # 项集实体类（包含三项物品）
 │   └── KnapsackInstance.java # 完整的背包问题实例模型
+├── io
+│   └── DataReader.java      # 高效的文件解析器（处理脏数据与分段逻辑）
+└── ui
+    ├── MainApp.java         # 主控界面（程序入口）
+    └── ScatterPlotViewer.java # 散点图绘制查看器
