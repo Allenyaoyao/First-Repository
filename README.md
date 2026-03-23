@@ -14,6 +14,6 @@
 * **开发语言**: Java (JDK 8+)
 * **构建工具**: Maven
 * **UI 框架**: Java Swing + FlatLaf 3.4.1
-* * **图表引擎**: JFreeChart 1.5.3
+* **图表引擎**: JFreeChart 1.5.3
 * **文档流处理**: Apache POI 4.1.2 (Excel OOXML)
   
