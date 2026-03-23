@@ -17,3 +17,8 @@
 * **图表引擎**: JFreeChart 1.5.3
 * **文档流处理**: Apache POI 4.1.2 (Excel OOXML)
 ## 📁 项目架构
+```text
+com.knapsack
+├── core
+│   ├── DPSolver.java         # 动态规划核心计算引擎
+│   └── DataProcessor.java     # 数据清洗与排序预处理模块
