@@ -27,3 +27,8 @@ com.knapsack
 │   ├── ItemSet.java          # 三项合一的项集实体模型
 │   └── KnapsackInstance.java  # 完整的背包实例上下文模型
 ├── io
+│   ├── DataReader.java       # 多维度数据文件解析器
+│   └── ExcelExporter.java    # (New) Excel 自动化构建与导出工具类
+└── ui
+    ├── MainApp.java          # 响应式主控界面 (程序入口)
+    └── ScatterPlotViewer.java # 深度美化版散点图看板
