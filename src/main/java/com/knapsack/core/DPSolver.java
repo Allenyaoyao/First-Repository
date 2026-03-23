@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class DPSolver {
 
-    // 【关键修改】返回值从 void 改成了 String，把求解报告返回出去
     public static String solve(KnapsackInstance instance) {
         long startTime = System.nanoTime();
 
@@ -66,7 +65,7 @@ public class DPSolver {
         long endTime = System.nanoTime();
         double timeMs = (endTime - startTime) / 1_000_000.0;
 
-        // 【关键修改】把结果拼装成一段漂亮的报告字符串
+        // 结果
         StringBuilder sb = new StringBuilder();
         sb.append("================ 求解报告 ================\n");
         sb.append("数据实例: ").append(instance.getName()).append("\n");

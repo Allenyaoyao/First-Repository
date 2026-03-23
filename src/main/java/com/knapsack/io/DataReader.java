@@ -38,7 +38,7 @@ public class DataReader {
 					continue;
 				}
 
-                // 遇到空行，说明一组数据（如UDKP1）可能读取结束了，尝试将其打包
+                // 遇到空行，说明一组数据可能读取结束了，尝试将其打包
                 if (line.isEmpty()) {
                     if (!currentName.isEmpty() && profitBuilder.length() > 0 && weightBuilder.length() > 0) {
                         instances.add(buildInstance(currentName, currentCapacity, profitBuilder.toString(), weightBuilder.toString()));
@@ -60,12 +60,12 @@ public class DataReader {
                 else if (line.contains("cubage of knapsack is")) {
                     String[] parts = line.split("is");
                     if (parts.length > 1) {
-                        // 利用正则把非数字的字符（比如句号）全部替换掉，只保留数字
+                        // 利用正则把非数字的字符全部替换掉，只保留数字
                         String numStr = parts[1].replaceAll("[^0-9]", ""); 
                         currentCapacity = Integer.parseInt(numStr);
                     }
                 }
-                // 3. 匹配到价值开头 (容错处理，避开原文件的拼写错误)
+                // 3. 匹配到价值开头 
                 else if (line.contains("profit of")) {
                     readState = 1;
                 }
@@ -90,7 +90,7 @@ public class DataReader {
                 }
             }
 
-            // 处理文件末尾最后一组数据（因为文件最后可能没有空行）
+            // 处理文件末尾最后一组数据
             if (!currentName.isEmpty() && profitBuilder.length() > 0 && weightBuilder.length() > 0) {
                 instances.add(buildInstance(currentName, currentCapacity, profitBuilder.toString(), weightBuilder.toString()));
             }
@@ -136,7 +136,7 @@ public class DataReader {
             // 1. 去除首尾不可见字符
             s = s.trim();
             
-            // 2. 利用正则表达式，把所有非数字的字符（比如那该死的句号）全部替换为空
+            // 2. 利用正则表达式，把所有非数字的字符全部替换为空
             s = s.replaceAll("[^0-9]", ""); 
             
             // 3. 确保清洗后字符串不为空，再进行数字转换
@@ -145,33 +145,5 @@ public class DataReader {
             }
         }
         return list;
-    }
-    
- // 测试读取、排序、求解与画图的全流程功能
-    public static void main(String[] args) {
-        // 注意这里的 resources 结尾的 s！你现在测试的是 idkp1-10.txt
-        String testFilePath = "src/main/resources/idkp1-10.txt"; 
-        
-        List<KnapsackInstance> list = readDataFile(testFilePath);
-        System.out.println("成功读取到 " + list.size() + " 组数据集！\n");
-        
-        // 为了避免一下子打印太多，我们只拿第一个实例 (例如 IDKP1) 来进行测试
-        if (!list.isEmpty()) {
-            KnapsackInstance firstInstance = list.get(0);
-            
-            System.out.println("--- 1. 测试排序功能 ---");
-            System.out.println("【排序前】第一项集的比值: " + firstInstance.getItemSets().get(0).getThirdItemRatio());
-            // 调用你写好的排序模块
-            com.knapsack.core.DataProcessor.sortByThirdItemRatio(firstInstance);
-            System.out.println("【排序后】第一项集的比值: " + firstInstance.getItemSets().get(0).getThirdItemRatio() + "\n");
-            
-            System.out.println("--- 2. 测试核心 DP 求解算法 ---");
-            // 调用动态规划求解器
-            com.knapsack.core.DPSolver.solve(firstInstance);
-            
-            System.out.println("\n--- 3. 正在启动图形界面绘制散点图 ---");
-            // 绘制该实例的散点图
-            com.knapsack.ui.ScatterPlotViewer.display(firstInstance);
-        }
     }
 }

@@ -24,7 +24,7 @@ public class DataProcessor {
         Collections.sort(itemSets, new Comparator<ItemSet>() {
             @Override
             public int compare(ItemSet o1, ItemSet o2) {
-                // 因为是非递增（降序），所以用 o2 的比值去比 o1 的比值
+                // 降序，所以用 o2 的比值去比 o1 的比值
                 return Double.compare(o2.getThirdItemRatio(), o1.getThirdItemRatio());
             }
         });
