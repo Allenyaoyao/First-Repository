@@ -16,4 +16,4 @@
 * **UI 框架**: Java Swing + FlatLaf 3.4.1
 * **图表引擎**: JFreeChart 1.5.3
 * **文档流处理**: Apache POI 4.1.2 (Excel OOXML)
-  
+## 📁 项目架构
