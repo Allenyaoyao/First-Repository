@@ -22,3 +22,8 @@ com.knapsack
 ├── core
 │   ├── DPSolver.java         # 动态规划核心计算引擎
 │   └── DataProcessor.java     # 数据清洗与排序预处理模块
+├── entity
+│   ├── Item.java             # 基础物品实体模型
+│   ├── ItemSet.java          # 三项合一的项集实体模型
+│   └── KnapsackInstance.java  # 完整的背包实例上下文模型
+├── io
